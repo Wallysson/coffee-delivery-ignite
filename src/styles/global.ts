@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: 0;
+
   }
 
   body {
@@ -18,4 +19,12 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1rem;
     font-weight: 400;
   }
+
+  ul {
+    list-style: none;
+}
+
+  img {
+    max-width: 100%;
+}
 `
