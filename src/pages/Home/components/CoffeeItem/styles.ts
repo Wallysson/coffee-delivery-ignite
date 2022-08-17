@@ -75,3 +75,51 @@ export const CoffeeTitle = styled.h4`
     color: ${props => props.theme['base-label']};
   }
 `
+
+export const CoffeeBuyContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: auto 0.25rem 1.25rem;
+  width: 85%;
+  padding-inline: 1.5rem;
+`
+
+export const PriceContainer = styled.div`
+  margin-right: auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.15rem;
+
+  strong {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 130%;
+  }
+`
+
+export const AddCartShopping = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 1rem;
+  height: 1rem;
+  padding: 0.5rem;
+  box-sizing: content-box;
+
+  border: none;
+
+  border-radius: 6px;
+  cursor: pointer;
+
+  background: ${props => props.theme['purple-dark']};
+
+  transition: 0.2s all;
+
+  &:hover {
+    background: ${props => props.theme['purple']};
+  }
+`
