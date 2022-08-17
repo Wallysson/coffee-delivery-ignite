@@ -1,4 +1,5 @@
 import coffeeList from '../../../../database/db-coffee.json'
+import { CoffeeItem } from '../CoffeeItem'
 import { CoffeeContainerHero, CoffeeContainerList } from './styles'
 
 export function CoffeeList() {
@@ -7,7 +8,7 @@ export function CoffeeList() {
       <h2>Nossos cafés</h2>
       <CoffeeContainerList>
         {coffeeList.map(item => (
-            <li>{JSON.stringify(item)}</li>
+            <CoffeeItem key={item.id} {...item}/>
         ))}
       </CoffeeContainerList>
     </CoffeeContainerHero>
