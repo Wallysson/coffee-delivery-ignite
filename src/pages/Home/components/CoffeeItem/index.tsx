@@ -1,4 +1,4 @@
-import { CoffeeImage, CoffeeItemContainer, CoffeeTag } from "./styles";
+import { CoffeeDescription, CoffeeImage, CoffeeItemContainer, CoffeeName, CoffeeTag, CoffeeTitle } from "./styles";
 
 
 export function CoffeeItem({id, name, description, price, image, tags} : any) {
@@ -10,8 +10,10 @@ export function CoffeeItem({id, name, description, price, image, tags} : any) {
           <li key={item}>{item}</li>
         ))}
       </CoffeeTag>
-      <h4>{name}</h4>
-      <span>{description}</span>
+      <CoffeeTitle>
+        <h4>{name}</h4>
+        <span>{description}</span>
+      </CoffeeTitle>
       <strong>{price}</strong>
     </CoffeeItemContainer>
   )

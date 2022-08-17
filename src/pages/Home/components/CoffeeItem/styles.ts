@@ -6,15 +6,16 @@ export const CoffeeItemContainer = styled.div`
   align-items: center;
   text-align: center;
 
+
   background: ${props => props.theme['base-card']};
 
   flex: 1 1 0;
-  max-width: 17rem;
+  max-width: 16rem;
   min-width: 14rem;
   height: 19.375rem;
 
   border-radius: 0.375rem 2.25px;
-  padding: 0 1.25rem;
+
 
   span {
     font-size: 0.875rem;
@@ -48,5 +49,29 @@ export const CoffeeTag = styled.ul`
     text-transform: uppercase;
     background: ${props => props.theme['yellow-light']};
     color: ${props => props.theme['yellow-dark']};
+  }
+`
+
+export const CoffeeTitle = styled.h4`
+  display: flex;
+  flex-direction: column;
+  padding-inline: 1.25rem;
+
+  h4 {
+    margin-top: 1rem;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: ${props => props.theme['base-subtitle']};
+    line-height: 130%;
+  }
+
+  span {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-family: 'Roboto';
+    font-weight: 400;
+    line-height: 130%;
+    color: ${props => props.theme['base-label']};
   }
 `
