@@ -31,7 +31,7 @@ export function CoffeeItem({id, name, description, price, image, tags} : CoffeeI
           <span>R$</span>
           <strong>{price}</strong>
         </PriceContainer>
-        <QuantityCoffee />
+        <QuantityCoffee id={id}/>
         <AddCartShopping>
           <ShoppingCart size={22} color={'white'} weight="fill" />
         </AddCartShopping>

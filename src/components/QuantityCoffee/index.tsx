@@ -1,12 +1,20 @@
 import { Minus, Plus } from 'phosphor-react'
+import { useShoppingCart } from '../../context/ShoppingCartContext'
 import { QuantityCoffeeContainer } from './styles'
 
-export function QuantityCoffee() {
+interface QuantityCoffeeProps {
+  id: number
+}
+
+export function QuantityCoffee({id} : QuantityCoffeeProps) {
+  const { getItem, decreaseItemQuantity, increaseItemQuantity } = useShoppingCart()
+  const quantity = getItem(id)
+
   return (
     <QuantityCoffeeContainer>
-      <button type="button"><Minus size={14} weight="bold"/></button>
-      <strong>1</strong>
-      <button type="button"><Plus size={14} weight="bold"/></button>
+      <button type="button" onClick={() => decreaseItemQuantity(id)}><Minus size={14} weight="bold"/></button>
+      <strong>{quantity}</strong>
+      <button type="button" onClick={() => increaseItemQuantity(id)}><Plus size={14} weight="bold"/></button>
     </QuantityCoffeeContainer>
   )
 }
