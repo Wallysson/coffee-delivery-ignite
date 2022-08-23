@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 export const CheckoutContainer = styled.main`
   display: flex;
@@ -26,17 +26,17 @@ export const CheckoutContainer = styled.main`
 export const PaymentAndAddressContainer = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1 1 55%;
+  /* flex: 1 1 55%; */
 
   @media (max-width: 1100px) {
     flex: 1;
   }
 `
 
-export const AddressContainer = styled.div`
+export const ContainerBackground = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
   background-color: ${props => props.theme['base-card']};
   padding: 2.5rem;
   margin-bottom: 0.75rem;
@@ -64,4 +64,68 @@ export const AddressContainerHeader = styled.header`
       color: ${props => props.theme['base-text']};
     }
   }
+`
+
+export const AddressContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+const inputDefault = css`
+  border: none;
+  border-radius: 4px;
+  border: 1px solid ${props => props.theme['base-input']};
+  padding: 0.75rem;
+  color: ${props => props.theme['base-label']};
+  font-size: 0.875rem;
+  line-height: 1.1375rem;
+  background: ${props => props.theme['base-button']};
+
+  &::placeholder {
+    color: ${props => props.theme['base-hover']};
+  }
+`
+
+export const AddressInputZip = styled.input`
+  ${inputDefault};
+  width: 12.5rem;
+`
+
+export const AddressInputStreet = styled.input`
+  ${inputDefault};
+
+`
+
+export const ContainerAddressFlex = styled.div`
+  display: flex;
+  gap: 0.75rem;
+`
+
+
+export const AddressInputNumber = styled.input`
+  ${inputDefault};
+  width: 12.5rem;
+
+`
+
+export const AddressInputComplement = styled.input`
+  ${inputDefault};
+  width: 100%;
+`
+
+export const AddressInputDistrict = styled.input`
+  ${inputDefault};
+
+`
+
+export const AddressInputCity = styled.input`
+  ${inputDefault};
+  width: 100%;
+`
+
+export const AddressInputState = styled.input`
+  ${inputDefault};
+  width: 3.75rem;
 `
