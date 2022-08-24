@@ -5,6 +5,7 @@ export const QuantityCoffeeContainer = styled.div`
   align-items: center;
   justify-content: center;
 
+
   gap: 0.5rem;
   padding: 0.55rem 0.5rem;
   border-radius: 6px;

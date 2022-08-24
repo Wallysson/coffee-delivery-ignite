@@ -1,8 +1,12 @@
 import styled from 'styled-components' 
 
 export const LayoutContainer = styled.div`
-  max-width: 70rem;
-  margin-inline: auto;
+  .container {
+    width: 100%;
+    max-width: 70rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   
   @media (max-width: 1660px) {
     padding-inline: 2rem;

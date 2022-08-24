@@ -18,5 +18,8 @@ export const CoffeeContainerList = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  list-style: none;
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2rem; */
+  /* row-gap: 2.5rem; */
 `

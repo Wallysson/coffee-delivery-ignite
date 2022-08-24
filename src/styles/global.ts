@@ -4,8 +4,8 @@ export const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    outline: none;
     box-sizing: 0;
-
   }
 
   body {
@@ -26,5 +26,13 @@ export const GlobalStyles = createGlobalStyle`
 
   img {
     max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 `
