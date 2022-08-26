@@ -4,7 +4,7 @@ export const PaymentAndAddressContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  /* flex: 1 1 55%; */
+
 
   h2 {
       margin-bottom: 1rem;
@@ -22,7 +22,6 @@ export const PaymentAndAddressContainer = styled.div`
 export const ContainerBackground = styled.div`
   display: flex;
   flex-direction: column;
-  /* width: 100%; */
   background-color: ${props => props.theme['base-card']};
   padding: 2.5rem;
   margin-bottom: 0.75rem;
