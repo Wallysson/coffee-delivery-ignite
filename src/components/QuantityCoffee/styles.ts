@@ -3,13 +3,16 @@ import styled from 'styled-components'
 export const QuantityCoffeeContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-
-
+  justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.55rem 0.5rem;
+  padding: 8px;
   border-radius: 6px;
   background: ${props => props.theme['base-button']};
+
+  strong {
+    font-weight: 400;
+    line-height: 130%;
+  }
 
   button {
     border: none;

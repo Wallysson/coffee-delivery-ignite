@@ -1,21 +1,21 @@
 import { createContext, ReactNode, useContext, useState } from "react"
+import { CoffeeItemsProps } from "../pages/Home/components/CoffeeCards"
+import { produce } from 'immer'
 
 interface ShoppingCartProviderProps {
   children: ReactNode
 }
 
-interface CartItem {
-  id: number
+export interface CartItem extends CoffeeItemsProps {
   quantity: number
 }
 
-type ShoppingCartContext = {
-  getItem: (id: number) => number
-  increaseItemQuantity: (id: number) => void
-  decreaseItemQuantity: (id: number) => void
+type ShoppingCartContextProps = {
+  cartItems: CartItem[]
+  addCoffeeToCart: (coffee: CartItem) => void;
 }
 
-const ShoppingCartContext = createContext({} as ShoppingCartContext)
+export const ShoppingCartContext = createContext({} as ShoppingCartContextProps)
 
 export function useShoppingCart() {
   return useContext(ShoppingCartContext)
@@ -24,55 +24,28 @@ export function useShoppingCart() {
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  function getItem(id: number) {
-    return cartItems.find(item => item.id === id)?.quantity || 1
-  }
+  function addCoffeeToCart(coffee: CartItem) {
+    const coffeeAlreadyExistsInCart = cartItems.findIndex(
+      (cartItem) => cartItem.id === coffee.id
+    );
 
-  function increaseItemQuantity(id: number) {
-    setCartItems(currentItem => {
-      if (currentItem.find(item => item.id === id) == null) {
-        return [...currentItem, {
-          id,
-          quantity: 1
-        }]
+    const newCart = produce(cartItems, (draft) => {
+      if (coffeeAlreadyExistsInCart < 0) {
+        draft.push(coffee);
       } else {
-        return currentItem.map(item => {
-          if (item.id === id) {
-            return {
-              ...item,
-              quantity: item.quantity + 1
-            }
-          } else {
-            return item
-          }
-        })
+        draft[coffeeAlreadyExistsInCart].quantity += coffee.quantity;
       }
-    })
+    });
+
+    setCartItems(newCart);
   }
 
-  function decreaseItemQuantity(id: number) {
-    setCartItems(currentItem => {
-      if (currentItem.find(item => item.id === id)?.quantity === 1) {
-        return currentItem.filter(item => item.id !== id)
-      } else {
-        return currentItem.map(item => {
-          if (item.id === id) {
-            return {
-              ...item,
-              quantity: item.quantity -1
-            }
-          } else {
-            return item
-          }
-        })
-      }
-    })
-  }
-
+  console.log(cartItems)
 
   return (
-    <ShoppingCartContext.Provider value={{getItem, increaseItemQuantity, decreaseItemQuantity}}>
+    <ShoppingCartContext.Provider value={{ cartItems, addCoffeeToCart }}>
       {children}
     </ShoppingCartContext.Provider>
   )
 }
+

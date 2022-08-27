@@ -42,12 +42,10 @@ export const HeroContent = styled.div`
 
 export const ItensDescriptionContainer = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 2.5rem;
   row-gap: 1.25rem;
   align-items: center;
-
-
 
   li {
     display: flex; 
@@ -55,22 +53,6 @@ export const ItensDescriptionContainer = styled.ul`
     align-items: center;
     gap: 0.75rem;
     line-height: 130%;
-    
-    &:nth-child(1) span{
-      background: ${props => props.theme['yellow-dark']};
-    }
-
-    &:nth-child(2) span{
-      background: ${props => props.theme['base-text']};
-    }
-
-    &:nth-child(3) span{
-      background: ${props => props.theme['yellow']};
-    }
-
-    &:nth-child(4) span{
-      background-color: ${props => props.theme['purple']};;
-    }
 
     @media (max-width: 500px) {
     font-size: 0.75rem;
@@ -83,8 +65,5 @@ export const ItensDescriptionContainer = styled.ul`
     padding: 8px;
     border-radius: 50%;
   }
-
-
-
 }
 `

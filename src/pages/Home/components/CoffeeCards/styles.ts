@@ -37,7 +37,7 @@ export const CoffeeTag = styled.ul`
   margin-top: 0.75rem;
   list-style: none;
 
-  li {
+  span {
     display: flex;
     justify-content: center;
     align-items: center;

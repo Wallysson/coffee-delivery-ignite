@@ -2,6 +2,11 @@ import styled, { css } from 'styled-components'
 
 export const HeaderContainer = styled.header`
   padding-block: 2rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background: ${props => props.theme.background};
 
   nav {
     display: flex;
