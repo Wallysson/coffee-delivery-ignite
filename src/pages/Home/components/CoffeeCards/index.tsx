@@ -4,6 +4,7 @@ import { QuantityCoffee } from "../../../../components/QuantityCoffee";
 import { useShoppingCart } from "../../../../context/ShoppingCartContext";
 import { AddCartShopping, CoffeeBuyContainer, CoffeeImage, CoffeeItemContainer, CoffeeTag, CoffeeTitle, PriceContainer } from "./styles";
 import imgFrom from '../../../../assets/Image (17).png'
+import { formatMoney } from "../../../../utils/FormatCurrency";
 
 export interface CoffeeItemsProps {
   id: number 
@@ -21,6 +22,8 @@ interface CoffeeProps {
 export function CoffeeCards({coffee}: CoffeeProps) {
   const { addCoffeeToCart } = useShoppingCart();
   const [quantity, setQuantity] = useState(1)
+  const formattedPrice = formatMoney(coffee.price)
+
   function handleIncreaseCoffee() {
     setQuantity((state) => state + 1);
   }
@@ -36,6 +39,8 @@ export function CoffeeCards({coffee}: CoffeeProps) {
     };
     addCoffeeToCart(coffeeToAdd);
   }
+
+
 
   return (
     <CoffeeItemContainer>
@@ -53,7 +58,7 @@ export function CoffeeCards({coffee}: CoffeeProps) {
       <CoffeeBuyContainer>
         <PriceContainer>
           <span>R$</span>
-          <strong>{coffee.price}</strong>
+          <strong>{formattedPrice}</strong>
         </PriceContainer>
         <QuantityCoffee 
           quantity={quantity} 
