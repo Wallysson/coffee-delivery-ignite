@@ -31,6 +31,7 @@ export function ConfirmationSection() {
       <ButtonConfirmOrder 
         text="Confirmar pedido" 
         disabled={cartQuantity <= 0}  
+        type="submit"
       />
 
     </ConfirmationSectionContainer>

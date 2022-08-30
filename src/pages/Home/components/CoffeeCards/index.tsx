@@ -3,7 +3,6 @@ import { useState } from "react";
 import { QuantityCoffee } from "../../../../components/QuantityCoffee";
 import { useShoppingCart } from "../../../../context/ShoppingCartContext";
 import { AddCartShopping, CoffeeBuyContainer, CoffeeImage, CoffeeItemContainer, CoffeeTag, CoffeeTitle, PriceContainer } from "./styles";
-import imgFrom from '../../../../assets/Image (17).png'
 import { formatMoney } from "../../../../utils/FormatCurrency";
 
 export interface CoffeeItemsProps {
@@ -39,8 +38,6 @@ export function CoffeeCards({coffee}: CoffeeProps) {
     };
     addCoffeeToCart(coffeeToAdd);
   }
-
-
 
   return (
     <CoffeeItemContainer>

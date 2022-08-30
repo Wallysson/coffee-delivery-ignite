@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled from "styled-components"
+
+export const InputErrorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+
+  > small {
+    color: red;
+  }
+`
 
 export const InputStyle = styled.input`
   border: none;

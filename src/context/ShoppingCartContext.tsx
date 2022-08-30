@@ -17,6 +17,7 @@ type ShoppingCartContextProps = {
   changeCartItemQuantity: (cartItemId: number, type: "increase" | "decrease") => void
   removeCartItem: (cartItemId: number) => void
   cartValueTotal: number
+  clearCart: () => void
 }
 
 const COFFEE_ITEMS_LOCALSTORAGE_KEY = 'coffeeDelivery: cartItems'
@@ -54,6 +55,10 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     });
 
     setCartItems(newCart);
+  }
+
+  function clearCart() {
+    setCartItems([])
   }
 
   function changeCartItemQuantity(
@@ -101,7 +106,8 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
         cartQuantity, 
         changeCartItemQuantity,
         removeCartItem,
-        cartValueTotal
+        cartValueTotal,
+        clearCart
       }}
     >
       {children}

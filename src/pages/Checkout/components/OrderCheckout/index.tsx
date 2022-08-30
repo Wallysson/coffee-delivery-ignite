@@ -1,10 +1,24 @@
 import { CreditCard, CurrencyDollar, MapPinLine, Money } from "phosphor-react";
+import { useFormContext } from "react-hook-form";
 import { Input } from "../../../../components/Input";
 import { defaultTheme } from "../../../../styles/themes/default";
 import { PaymentMethodInput } from "../PaymentMethodInput";
+import { PaymentMethodOptions } from "./PaymentMethodOptions";
 import { AddressContainer, PaymentAddressContainerHeader, PaymentAndAddressContainer, ContainerBackground, PaymentOptionsContainer } from "./styles";
 
+interface ErrorsType {
+  errors: {
+    [key: string]: {
+      message: string
+    }
+  }
+}
+
 export function OrderCheckout() {
+  const { register, formState } = useFormContext()
+
+  const { errors } = formState as unknown as ErrorsType
+
   return (
     <PaymentAndAddressContainer>
     <h2>Complete seu pedido</h2>
@@ -18,13 +32,46 @@ export function OrderCheckout() {
         </PaymentAddressContainerHeader>
 
         <AddressContainer>
-          <Input placeholder="CEP" type="number" className="zip"/>
-          <Input placeholder="Rua"className="street"/>
-          <Input placeholder="Número" type="number"/>
-          <Input placeholder="Complemento" className="complement"/>
-          <Input placeholder="Bairro"/>
-          <Input placeholder="Cidade"/>
-          <Input placeholder="UF"/>
+          <Input 
+            placeholder="CEP" 
+            type="number" 
+            className="zip" 
+            {...register("cep")}
+            error={errors.cep?.message}
+          />
+          <Input 
+            placeholder="Rua"
+            className="street"
+            {...register("street")}
+            error={errors.street?.message}
+          />
+          <Input 
+            placeholder="Número" 
+            type="number"
+            {...register("number")}
+            error={errors.number?.message}
+          />
+          <Input 
+            placeholder="Complemento" 
+            className="complement"
+            {...register("complement")}
+            error={errors.complement?.message}
+          />
+          <Input 
+            placeholder="Bairro" 
+            {...register("district")}
+            error={errors.district?.message} 
+          />
+          <Input 
+            placeholder="Cidade"
+            {...register("city")}
+            error={errors.city?.message} 
+          />
+          <Input 
+            placeholder="UF"
+            {...register("uf")}
+            error={errors.uf?.message} 
+          />
         </AddressContainer>
       </ContainerBackground>
 
@@ -38,20 +85,7 @@ export function OrderCheckout() {
         </PaymentAddressContainerHeader>
 
         <PaymentOptionsContainer>
-          <PaymentMethodInput>
-            <CreditCard />
-            <span>Cartão de Crédito</span>
-          </PaymentMethodInput>
-
-          <PaymentMethodInput>
-            <Money />
-            <span>Cartão de Débito</span>
-          </PaymentMethodInput>
-
-          <PaymentMethodInput>
-            <Money />
-            <span>Dinheiro</span>
-          </PaymentMethodInput>
+          <PaymentMethodOptions />
         </PaymentOptionsContainer>
       </ContainerBackground>
     </PaymentAndAddressContainer>

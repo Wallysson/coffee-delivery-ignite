@@ -1,8 +1,26 @@
 import { MapPin, Clock, CurrencyDollar } from "phosphor-react";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { InfoIcone } from "../../components/InfoIcone";
+import { OrderData } from "../Checkout";
+import { paymentMethods } from "../Checkout/components/OrderCheckout/PaymentMethodOptions";
 import { OrderCompleteContainer, OrderDetailsPurchaseContainer } from "./styles";
 
+interface LocationType {
+  state: OrderData
+}
+
 export function OrderComplete() {
+  const { state } = useLocation() as unknown as LocationType
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if(!state) {
+      navigate('/')
+    }
+  }, [])
+
   return (
     <OrderCompleteContainer className="container">
       <div>
@@ -17,7 +35,7 @@ export function OrderComplete() {
             iconBg={"#8047F8"}
             text=
             {
-              <span>Entrega em <strong>Rua João Daniel Martinelli, 102</strong><br /> Farrapos - Porto Alegre, RS</span>
+              <span>Entrega em <strong>{state.street}, {state.number}</strong><br /> {state.district} - {state.city}, {state.uf}</span>
             }
 
           />
@@ -32,7 +50,7 @@ export function OrderComplete() {
             icon={<CurrencyDollar weight="fill" />}
             iconBg={"#C47F17"}
             text={
-              <span>Pagamento na entrega<br /><strong>Cartão de Crédito</strong></span>
+              <span>Pagamento na entrega<br /><strong>{paymentMethods[state.paymentMethod].label}</strong></span>
             }
           />
         </OrderDetailsPurchaseContainer>
