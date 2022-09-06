@@ -2,7 +2,7 @@
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
 </p>
 
-# 💻 ToDoList - Desafio 01 Ignite (@Rockeseat)
+# 💻 Coffee Delivery - Desafio 02 Ignite (@Rockeseat)
 
 Desenvolver uma aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia, usando conceitos como:
 - Estados
